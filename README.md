@@ -37,3 +37,6 @@ Goal of project:
 
 8. Eeach role(Buyer, Warehouse Worker, Manager) has their own destination page to see the app.
 
+
+# Use Case Diagram
+![UseCaseDiagram](https://github.com/Toukir-Hasan/coen-6312/assets/115115021/ea6b7f05-703c-4860-9976-8f081868722f)
