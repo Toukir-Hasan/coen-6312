@@ -18,11 +18,11 @@ public class User {
         this.password = password;
     }
 
-    public String getUser_name() {
+    private String getUser_name() {
         return user_name;
     }
 
-    public void setUser_name(String user_name) {
+    private void setUser_name(String user_name) {
         this.user_name = user_name;
     }
 
@@ -83,6 +83,32 @@ public void registerUser() {
         System.out.println("Registration successful. User information has been appended to information.json");
     } catch (IOException | ParseException e) {
         e.printStackTrace();
+    }
+}
+public boolean Login(String enteredUserName, String enteredPassword) {
+    // Provide the hardcoded file path
+    String filePath = "D:\\java\\New folder\\demo\\src\\main\\resources\\information.json";
+
+    try (FileReader fileReader = new FileReader(filePath)) {
+        JSONParser jsonParser = new JSONParser();
+        JSONArray employee_information = (JSONArray) jsonParser.parse(fileReader);
+
+        for (Object obj : employee_information) {
+            JSONObject userObj = (JSONObject) obj;
+            String storedUserName = (String) userObj.get("user_name");
+            String storedPassword = (String) userObj.get("password");
+
+            if (enteredUserName.equals(storedUserName) && enteredPassword.equals(storedPassword)) {
+                // System.out.println("Login successful. Welcome, " + enteredUserName + "!");
+                return true;
+            }
+        }
+
+        System.out.println("Login failed. Invalid username or password.");
+        return false;
+    } catch (IOException | ParseException e) {
+        e.printStackTrace();
+        return false;
     }
 }
 

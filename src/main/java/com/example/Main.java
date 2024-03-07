@@ -4,22 +4,15 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Login");
-        System.out.println("Register");
-        System.out.print("Enter your choice ( Register or Login): ");
+        System.out.print("Enter Inventory_name: ");
+        String inventory_name = scanner.next();
+        System.out.print("Enter location: ");
+        String location = scanner.next();
 
-        String choice = scanner.next();
+        inventory_system system_login = new inventory_system();
+        system_login.enter_into_system(inventory_name,location);
+     
 
-        if (choice.equals("register")) {
-            // User chose login
-            System.out.print("Enter username: ");
-            String username = scanner.next();
-            System.out.print("Enter password: ");
-            String password = scanner.next();
-
-            User new_user=new User(username, password);
-            new_user.registerUser();
-
+ 
     }
-}
 }
