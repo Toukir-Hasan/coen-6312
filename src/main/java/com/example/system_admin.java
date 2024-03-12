@@ -11,6 +11,7 @@ import org.json.simple.parser.ParseException;
 public class system_admin {
     private String name = "toukir";
     private String password = "123";
+    // role, job level,
 
     public String getUser_name() {
         return name;
@@ -19,7 +20,7 @@ public class system_admin {
         return password;
     }
 
-protected JSONArray all_employee_list(){
+public JSONArray all_employee_list(){
     String filePath = "D:\\java\\New folder\\demo\\src\\main\\resources\\information.json";
 
         try (FileReader fileReader = new FileReader(filePath)) {

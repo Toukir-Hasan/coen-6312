@@ -12,7 +12,8 @@ public class User {
 
     protected String user_name;
     protected String password;
-
+    //role,
+    //
     public User(String user_name, String password) {
         this.user_name = user_name;
         this.password = password;
@@ -110,6 +111,36 @@ public boolean Login(String enteredUserName, String enteredPassword) {
         e.printStackTrace();
         return false;
     }
+}
+
+
+public String role(String enteredUserName, String enteredPassword){
+    String filePath = "D:\\java\\New folder\\demo\\src\\main\\resources\\information.json";
+
+        try (FileReader fileReader = new FileReader(filePath)) {
+            JSONParser jsonParser = new JSONParser();
+            JSONArray employee_information = (JSONArray) jsonParser.parse(fileReader);
+
+            int arraySize = employee_information.size();
+            for (int i = 0; i < arraySize; i++) {
+                JSONObject userObj = (JSONObject) employee_information.get(i);
+                String storedUserName = (String) userObj.get("user_name");
+                String storedPassword = (String) userObj.get("password");
+
+                if (enteredUserName.equals(storedUserName) && enteredPassword.equals(storedPassword)) {
+                    // If login is successful, retrieve the role and return it
+                    String role = (String) userObj.get("role");
+                    return role;
+                }
+            }
+
+            System.out.println("nothing found");
+            return null;  // Return null if login is not successful
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+            return null;  // Return null in case of an exception
+        }
+    
 }
 
 

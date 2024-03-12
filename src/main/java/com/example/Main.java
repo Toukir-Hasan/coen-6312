@@ -1,6 +1,8 @@
 package com.example;
 import java.util.Scanner;
 
+import com.inventory.inventory_system;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -9,8 +11,8 @@ public class Main {
         System.out.print("Enter location: ");
         String location = scanner.next();
 
-        inventory_system system_login = new inventory_system();
-        system_login.enter_into_system(inventory_name,location);
+        inventory_system system_login = new inventory_system(inventory_name,location);
+        system_login.enter_into_system();
      
 
  
